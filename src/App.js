@@ -6,6 +6,11 @@ import 'antd/dist/antd.css';
 import { Input } from 'antd';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import Manpower from './components/Manpower';
+import Treeselect from './components/Treeselect';
+import Listshade from './components/Listshade';
+import Treeshade from './components/Treeshade';
+import Treelist from './components/Treelist';
+import { Switch, Route, Link } from 'react-router-dom';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -20,13 +25,6 @@ class App extends Component {
     onCollapse = (collapsed) => {
         console.log(collapsed);
         this.setState({ collapsed });
-    }
-    componentDidMount() {
-        console.log('22',ReactDOM.findDOMNode(this.refs.subArrow))
-        //console.log('88',ReactDOM.findDOMNode(this.refs['ant-menu-submenu-arrow']))
-        //this.refs['sender-name']
-        //var oArrow = document.getElementByClassName("ant-menu-submenu-arrow");
-        //console.log(oArrow)
     }
     render() {
         return (
@@ -62,16 +60,22 @@ class App extends Component {
                       <div className="logo" />
                       <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
-                          <Icon type="pie-chart" />
-                          <span>人员管理</span>
+                          <Link to='/'>
+                            <Icon type="pie-chart" />
+                            <span>人员管理</span>
+                          </Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                          <Icon type="desktop" />
-                          <span>组织管理</span>
+                          <Link to='/treeselect'>
+                            <Icon type="desktop" />
+                            <span>组织管理</span>
+                          </Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                          <Icon type="desktop" />
-                          <span>绩效管理</span>
+                          <Link to='/listshade'>
+                            <Icon type="desktop" />
+                            <span>绩效管理</span>
+                          </Link>
                         </Menu.Item>
                         <SubMenu
                           key="sub1"
@@ -121,16 +125,26 @@ class App extends Component {
                             </SubMenu>
                         </SubMenu>
                         <Menu.Item key="15">
-                          <Icon type="file" />
-                          <span>知识共享平台</span>
+                          <Link to='/treeshade'>
+                              <Icon type="file" />
+                              <span>知识共享平台</span>
+                          </Link>
                         </Menu.Item>
                         <Menu.Item key="16">
-                          <Icon type="file" />
-                          <span>能力评估</span>
+                            <Link to='/treelist'>
+                                <Icon type="file" />
+                                <span>能力评估</span>
+                            </Link>
                         </Menu.Item>
                       </Menu>
                     </Sider>
-                    <Manpower />
+                    <Switch>
+                      <Route exact path='/' component={Manpower}/>
+                      <Route path='/treeselect' component={Treeselect}/>
+                      <Route path='/listshade' component={Listshade}/>
+                      <Route path='/treeshade' component={Treeshade}/>
+                      <Route path='/treelist' component={Treelist}/>
+                    </Switch>
                 </Layout>
             </div>
         );
