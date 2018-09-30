@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Manpower.css';
-import { Tree, Table } from 'antd';
+import { Tree, Table, Button } from 'antd';
 const DirectoryTree = Tree.DirectoryTree;
 const TreeNode = Tree.TreeNode;
 const columns = [{
@@ -115,10 +115,10 @@ class Treelist extends Component {
                         </div>
                     </div>
                     <div className="trliFooter">
-                      <button onClick = {this.closeConTrli}>关闭</button>
+                      <Button type="danger" onClick = {this.closeConTrli}  className="shadeButton">关闭</Button>
                     </div>
-			    </div>
-				<button onClick = {this.showConTrli}  className="openTree">左树右表</button>
+        			    </div>
+                  <Button type="primary" onClick = {this.showConTrli}  className="openTree">左树右表</Button>
             </div>
         );
     }

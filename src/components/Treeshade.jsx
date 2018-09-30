@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Manpower.css';
-import { Tree, Input, Icon } from 'antd';
+import { Tree, Input, Icon, Button } from 'antd';
 const TreeNode = Tree.TreeNode;
 const Search = Input.Search;
 const x = 3;
@@ -144,10 +144,10 @@ class Treeshade extends Component {
                         </div>
                     </div>
                     <div className="treeFooter">
-                      <button onClick = {this.closeConTree}>关闭</button>
+                      <Button type="danger" onClick = {this.closeConTree} className="shadeButton">关闭</Button>
                     </div>
     				    </div>
-				        <button onClick = {this.showConTree} className="openTree">树之遮罩</button>
+                <Button type="primary" onClick = {this.showConTree} className="openTree">树之遮罩</Button>
                 <Input
                   placeholder="请输入当前树的节点"
                   suffix={suffix}

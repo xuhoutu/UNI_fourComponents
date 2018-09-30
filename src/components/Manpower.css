@@ -146,9 +146,12 @@ body{
 	float:right;
 }
 .openTree{
-	width: 70px;
+	width: 90px;
 	margin-right: 80px;
 	display: inline-block;
+}
+.shadeButton{
+	height: 28px;
 }
 .nodeInput{
 	display: inline-block;
