@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Manpower.css';
 import { Input, Icon, Table, Button } from 'antd';
+import styles from './Manpower.css';
 const Search = Input.Search;
 const columns = [{
   title: 'Name',
@@ -26,6 +27,7 @@ class Listshade extends Component {
         userName: '',
         selectedRowKeys: [],
   	    loading: false,
+        key: 0,
       }
   	showConList=() => {
   		this.refs.covList.style.display = "block";
@@ -53,15 +55,23 @@ class Listshade extends Component {
   	    console.log('selectedRowKeys changed: ', selectedRowKeys);
   	    this.setState({ selectedRowKeys });
   	}
-	change=(e) =>{
+	  change=(e) =>{
       console.log(e)
     }
     rowClick=(record, index) =>{
-    	console.log(record);
-      	this.setState({
+      this.setState({
   		  userName: record.name
   		})
-        console.log(this)
+      this.setState({
+        key: record.key
+      })
+      var aLi = document.getElementsByClassName("ant-table-row-level-0");
+      for(var i = 0; i < aLi.length; i ++){
+        aLi[i].classList.remove("row-selected");
+        if(i == index){
+          aLi[i].className += ' row-selected';
+        }
+      }
     }
     emitEmpty = () => {
 	    this.userNameInput.focus();
@@ -94,7 +104,7 @@ class Listshade extends Component {
                         <div className="listContentB">
                         	<Table  
                         		columns={columns} 
-                        		dataSource={data} 
+                        		dataSource={data}
                         		onRowClick={this.rowClick}
                         	/>
                         </div>

@@ -312,3 +312,7 @@ body{
 	height: 412px;
 	border: 1px solid #eee;
 }
+
+.row-selected{
+	background-color: #fafafa !important;
+}
