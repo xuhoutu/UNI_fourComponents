@@ -316,3 +316,8 @@ body{
 .row-selected{
 	background-color: #fafafa !important;
 }
+
+.treeFooter > button {
+    float: right;
+    margin-left: 12px;
+}

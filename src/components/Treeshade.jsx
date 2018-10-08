@@ -93,12 +93,23 @@ class Treeshade extends Component {
             this.refs.covTree.style.display = "none";
       	    this.refs.conTree.style.display = "none";
       	}
+        enterTreeData=() => {
+            this.refs.covTree.style.display = "none";
+            this.refs.conTree.style.display = "none";
+            console.log(this.state.userName)
+        }
         selectNode=(selectedKeys, e) => {
           console.log(selectedKeys);
           console.log(e)
         }
         change=(e) =>{
           console.log(e)
+        }
+        selectTreeNode=(selectedKeys, e)=>{
+            console.log(selectedKeys, e)
+            this.setState({
+                userName: selectedKeys[0]
+            })
         }
         render() {
         	const { searchValue, expandedKeys, autoExpandParent } = this.state;
@@ -138,6 +149,7 @@ class Treeshade extends Component {
                               onExpand={this.onExpand}
                               expandedKeys={expandedKeys}
                               autoExpandParent={autoExpandParent}
+                              onSelect={this.selectTreeNode}
                             >
                               {loop(gData)}
                             </Tree>
@@ -145,11 +157,12 @@ class Treeshade extends Component {
                     </div>
                     <div className="treeFooter">
                       <Button type="danger" onClick = {this.closeConTree} className="shadeButton">关闭</Button>
+                      <Button type="primary" onClick = {this.enterTreeData} className="shadeButton">确定</Button>
                     </div>
     				    </div>
                 <Button type="primary" onClick = {this.showConTree} className="openTree">树之遮罩</Button>
                 <Input
-                  placeholder="请输入当前树的节点"
+                  placeholder="请选择树节点"
                   suffix={suffix}
                   value={userName}
                   ref={node => this.userNameInput = node}
