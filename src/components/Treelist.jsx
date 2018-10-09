@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './Manpower.css';
+import axios from 'axios';
 import { Tree, Table, Button } from 'antd';
 const DirectoryTree = Tree.DirectoryTree;
 const TreeNode = Tree.TreeNode;
 const columns = [{
+  title: 'Code',
+  dataIndex: 'code',
+}, {
+  title: 'Number',
+  dataIndex: 'number',
+}, {
   title: 'Name',
   dataIndex: 'name',
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
 }];
 class Treelist extends Component {
     constructor(props) {
@@ -31,6 +32,9 @@ class Treelist extends Component {
   	showConTrli=() => {
   		this.refs.covTrli.style.display = "block";
   		this.refs.conTrli.style.display = "block";
+        this.setState({
+            data: this.state.arr.slice(0,18)
+        });
   	}
   	closeConTrli=() => {
   	    this.refs.covTrli.style.display = "none";
@@ -39,46 +43,40 @@ class Treelist extends Component {
     onSelect = (selectedKeys,selectedNodes) => {
         if(selectedKeys == "0-0"){
             this.setState({
-              data: this.state.arr.slice(0,9)
+              data: this.state.arr.slice(0,18)
             });
         }else if(selectedKeys == "0-0-0"){
             this.setState({
-              data: this.state.arr.slice(9,18)
+              data: this.state.arr.slice(18,36)
             });
         }else if(selectedKeys == "0-0-1"){
             this.setState({
-              data: this.state.arr.slice(18,27)
+              data: this.state.arr.slice(36,47)
             });
         }else if(selectedKeys == "0-1"){
             this.setState({
-              data: this.state.arr.slice(27,36)
+              data: this.state.arr.slice(47,74)
             });
         }else if(selectedKeys == "0-1-0"){
             this.setState({
-              data: this.state.arr.slice(36,45)
+              data: this.state.arr.slice(74,96)
             });
         }else if(selectedKeys == "0-1-1"){
             this.setState({
-              data: this.state.arr.slice(45,54)
+              data: this.state.arr.slice(96,110)
             });
         }
     }
     onExpand = () => {
         console.log('Trigger Expand');
     }
-    componentDidMount(){
-        for (let i = 0; i < 54; i++) {
-          this.state.arr.push({
-            key: i,
-            name: `Edward King ${i}`,
-            age: 32,
-            address: `London, Park Lane no. ${i}`,
-          });
-        }
-        this.setState({
-          data: this.state.arr.slice(0,9)
+    componentDidMount() {
+        axios.get('https://www.easy-mock.com/mock/5b9f51bc8b5cc40f1f28a324/example/demolist')
+        .then( (response)=> this.setState({ arr : response.data }) )
+        .catch(function (error) {
+            console.log(error);
         })
-    } 
+    }
     render() {
         const { selectedRowKeys } = this.state;
         const rowSelection = {

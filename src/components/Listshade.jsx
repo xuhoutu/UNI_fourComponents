@@ -2,32 +2,25 @@ import React, { Component } from 'react';
 import './Manpower.css';
 import { Input, Icon, Table, Button } from 'antd';
 import styles from './Manpower.css';
+import axios from 'axios';
 const Search = Input.Search;
 const columns = [{
+  title: 'Code',
+  dataIndex: 'code',
+}, {
+  title: 'Number',
+  dataIndex: 'number',
+}, {
   title: 'Name',
   dataIndex: 'name',
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
 }];
-const data = [];
-for (let i = 0; i < 46; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
 class Listshade extends Component {
   	state = {
         userName: '',
         selectedRowKeys: [],
   	    loading: false,
         key: 0,
+        data: [],
       }
   	showConList=() => {
   		this.refs.covList.style.display = "block";
@@ -41,6 +34,7 @@ class Listshade extends Component {
   	    this.refs.covList.style.display = "none";
   	    this.refs.conList.style.display = "none";
   	    console.log(this.state.userName)
+        console.log(this.state.data)
   	}
   	start = () => {
   	    this.setState({ loading: true });
@@ -76,7 +70,15 @@ class Listshade extends Component {
     emitEmpty = () => {
 	    this.userNameInput.focus();
 	    this.setState({ userName: '' });
+        console.log(this.state.data)
 	}
+    componentDidMount() {
+        axios.get('https://www.easy-mock.com/mock/5b9f51bc8b5cc40f1f28a324/example/demolist')
+        .then( (response)=> this.setState({ data : response.data }))
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
     render() {
         const { userName } = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
@@ -87,7 +89,7 @@ class Listshade extends Component {
   	    };
   	    rowSelection={rowSelection}
   	    */
-	       const hasSelected = selectedRowKeys.length > 0;
+	    const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className="Listshade">
               <div id="covList"  ref="covList"></div>
@@ -104,7 +106,7 @@ class Listshade extends Component {
                         <div className="listContentB">
                         	<Table  
                         		columns={columns} 
-                        		dataSource={data}
+                        		dataSource={ this.state.data }
                         		onRowClick={this.rowClick}
                         	/>
                         </div>
