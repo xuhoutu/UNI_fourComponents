@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Manpower.css';
 import { Input, Icon, Table, Button } from 'antd';
-import styles from './Manpower.css';
 import axios from 'axios';
 const Search = Input.Search;
 const columns = [{
@@ -62,7 +61,7 @@ class Listshade extends Component {
       var aLi = document.getElementsByClassName("ant-table-row-level-0");
       for(var i = 0; i < aLi.length; i ++){
         aLi[i].classList.remove("row-selected");
-        if(i == index){
+        if(i === index){
           aLi[i].className += ' row-selected';
         }
       }
@@ -82,14 +81,14 @@ class Listshade extends Component {
     render() {
         const { userName } = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
-        const { loading, selectedRowKeys } = this.state;
+        //const { selectedRowKeys } = this.state;
   	    /*const rowSelection = {
   	      selectedRowKeys,
   	      onChange: this.onSelectChange,
   	    };
   	    rowSelection={rowSelection}
   	    */
-	    const hasSelected = selectedRowKeys.length > 0;
+	      //const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className="Listshade">
               <div id="covList"  ref="covList"></div>

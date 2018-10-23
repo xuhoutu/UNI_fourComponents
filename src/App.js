@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import logoImg from './images/logo.png';
 import 'antd/dist/antd.css';
 import { Input } from 'antd';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import Manpower from './components/Manpower';
 import Treeselect from './components/Treeselect';
 import Listshade from './components/Listshade';
@@ -12,9 +11,10 @@ import Treeshade from './components/Treeshade';
 import Treelist from './components/Treelist';
 import { Switch, Route, Link } from 'react-router-dom';
 
-const { Header, Content, Footer, Sider } = Layout;
+//当前项目是描述四个组件的。
+
+const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 const Search = Input.Search;
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
                 <div className="AppHeader">
                     <div className="headerTop">
                         <div className="headerTopL">         
-                            <img src={ logoImg } />
+                            <img src={ logoImg } alt=""/>
                         </div>
                         <span className="headerTopC"><b>中国联通HR网上服务平台</b></span>
                         <div className="headerTopR">

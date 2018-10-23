@@ -11,7 +11,7 @@ import checkImg from '../images/u4465.png';
 import qualificationsImg from '../images/u4466.png';
 import performanceImg from '../images/u4467.png';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 class Manpower extends Component {
     render() {
@@ -26,20 +26,20 @@ class Manpower extends Component {
                     <div style={{ minHeight: 360 }}  className="part">
                         <div className="part1">
                             <div className="part1Left">
-                                <div className="part1LeftTop"><img src={ importantthingImg } className="autoImg"/></div>
-                                <div className="part1LeftBottom"><img src={ quickstartImg }  className="autoImg"/></div>
+                                <div className="part1LeftTop"><img src={ importantthingImg } className="autoImg" alt="" /></div>
+                                <div className="part1LeftBottom"><img src={ quickstartImg }  className="autoImg" alt="" /></div>
                             </div>
-                            <div className="part1Right"><img src={ kalendarImg }  className="autoImg"/></div>
+                            <div className="part1Right"><img src={ kalendarImg }  className="autoImg" alt="" /></div>
                         </div>
                         <div className="part2">
-                        	<div className="part2son"><img src={ cultivateImg }  className="autoImg"/></div>
-                        	<div className="part2son"><img src={ variousImg }  className="autoImg"/></div>
-                        	<div className="part2son"><img src={ seniorImg }  className="autoImg"/></div>
-                        	<div className="part2son"><img src={ checkImg }  className="autoImg"/></div>
+                        	<div className="part2son"><img src={ cultivateImg }  className="autoImg" alt=""/></div>
+                        	<div className="part2son"><img src={ variousImg }  className="autoImg" alt="" /></div>
+                        	<div className="part2son"><img src={ seniorImg }  className="autoImg" alt="" /></div>
+                        	<div className="part2son"><img src={ checkImg }  className="autoImg" alt="" /></div>
                         </div>
                         <div className="part3">
-                        	<div className="part3son"><img src={ qualificationsImg }  className="autoImg"/></div>
-                        	<div className="part3son"><img src={ performanceImg }  className="autoImg"/></div>
+                        	<div className="part3son"><img src={ qualificationsImg }  className="autoImg" alt="" /></div>
+                        	<div className="part3son"><img src={ performanceImg }  className="autoImg" alt="" /></div>
                         </div>
                     </div>
                   </Content>

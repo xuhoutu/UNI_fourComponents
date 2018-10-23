@@ -41,27 +41,27 @@ class Treelist extends Component {
   	    this.refs.conTrli.style.display = "none";
   	}
     onSelect = (selectedKeys,selectedNodes) => {
-        if(selectedKeys == "0-0"){
+        if(selectedKeys === "0-0"){
             this.setState({
               data: this.state.arr.slice(0,18)
             });
-        }else if(selectedKeys == "0-0-0"){
+        }else if(selectedKeys === "0-0-0"){
             this.setState({
               data: this.state.arr.slice(18,36)
             });
-        }else if(selectedKeys == "0-0-1"){
+        }else if(selectedKeys === "0-0-1"){
             this.setState({
               data: this.state.arr.slice(36,47)
             });
-        }else if(selectedKeys == "0-1"){
+        }else if(selectedKeys === "0-1"){
             this.setState({
               data: this.state.arr.slice(47,74)
             });
-        }else if(selectedKeys == "0-1-0"){
+        }else if(selectedKeys === "0-1-0"){
             this.setState({
               data: this.state.arr.slice(74,96)
             });
-        }else if(selectedKeys == "0-1-1"){
+        }else if(selectedKeys === "0-1-1"){
             this.setState({
               data: this.state.arr.slice(96,110)
             });
